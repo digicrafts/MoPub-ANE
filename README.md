@@ -1,7 +1,7 @@
 MoPub Native Extension for Adobe Air
 =========
 
-This Mopub ANE add supprt to using MoPub Mobile monetization platform.
+This Mopub ANE add supprt to using MoPub Mobile monetization platform with Adobe Air. Supports Android and iOS.
 
 What is MoPub?
 =========
