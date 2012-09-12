@@ -1,0 +1,21 @@
+<extension xmlns="http://ns.adobe.com/air/extension/3.1">
+	<id>digicrafts.extensions.Mopub</id>
+	<versionNumber>1.0.0</versionNumber>
+	<copyright>(c) 2012, Digicrafts, Inc. All rights reserved.</copyright>   
+	<platforms>
+       	<platform name="Android-ARM">
+			<applicationDeployment>         
+				<nativeLibrary>Mopub.jar</nativeLibrary>
+				<initializer>digicrafts.extensions.MopubExtension</initializer>
+				<finalizer>digicrafts.extensions.MopubExtension</finalizer>
+			</applicationDeployment>   
+       	</platform>
+		<platform name="iPhone-ARM">
+       		<applicationDeployment>
+           		<nativeLibrary>libMopub.a</nativeLibrary>
+           		<initializer>MopubExtInitializer</initializer>
+           		<finalizer>MopubExtFinalizer</finalizer>
+       		</applicationDeployment>		    
+     	</platform>
+	</platforms>
+</extension>
