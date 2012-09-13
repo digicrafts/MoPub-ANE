@@ -1,3 +1,6 @@
 *.DS_Store
 *userdata
 Mopub-Native-IOS/build*
+*.p12
+package.sh
+Mopub-Native-Android/build*
