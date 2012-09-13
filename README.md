@@ -3,14 +3,13 @@ MoPub Native Extension for Adobe Air
 
 This Mopub ANE add supprt to using MoPub Mobile monetization platform with Adobe Air. Supports Android and iOS.
 
-What is MoPub?
-=========
+##What is MoPub?
+
 Powerful Ad Management for Mobile Apps. Drive more revenue from your mobile apps with the world’s leading ad server and exchange for smartphones.
 
 http://www.mopub.com
 
-Install the library
-=========
+##Install the library
 
 Add the MoPub-ANE library to your project.
 
@@ -49,3 +48,29 @@ In FlashDevelop:
   1. Copy the MoPub.swc file to your project folder.
   2. In the explorer panel, right click the .swc and select Add to Library.
   3. Right-click the swc file in the explorer, choose Options, and select External Library
+
+##Add the Actionscript
+
+Import the library
+
+```javascript
+  import digicrafts.extensions.Mopub;
+```
+
+Create the MoPub AdView
+
+```javascript
+  Mopub.create("MOPUB_AD_UNIT_ID");
+```
+
+Show the AdView
+
+```javascript
+  showAdView(0,420,320,50);
+```
+
+Hide the AdView
+
+```javascript
+  Mopub.dismissAdView();
+```
