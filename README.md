@@ -66,7 +66,7 @@ Create the MoPub AdView
 Show the AdView
 
 ```javascript
-  showAdView(0,420,320,50);
+  Mopub.showAdView(0,420,320,50);
 ```
 
 Hide the AdView
