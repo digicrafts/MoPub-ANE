@@ -26,7 +26,7 @@ In Flash Builder 4.6:
   1. Goto Project Properties
   2. Select Native Extensions under Actionscript Build Path
   3. Choose Add ANE... and navigate to the Mopub.ane file 
-  4. Select Actionscript Build Packaging > Google Android
+  4. Select Actionscript Build Packaging > Google Android or Apple IOS
   5. Select the Native Extensions tab, and click the 'Package' check box next to the extension
 
 In Flash Professional CS5.5 or Lower:
@@ -75,4 +75,7 @@ Hide the AdView
   Mopub.dismissAdView();
 ```
 
-###Setup for Android
+##Setup for Android
+
+Update Your Application Descriptor
+
