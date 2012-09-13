@@ -74,3 +74,5 @@ Hide the AdView
 ```javascript
   Mopub.dismissAdView();
 ```
+
+###Setup for Android
