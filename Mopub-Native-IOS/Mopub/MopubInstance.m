@@ -190,26 +190,26 @@
 
 #pragma mark - MMADViewDelegate
 
-//- (void)adRequestSucceeded:(MMAdView *) adView{
-//    
-//    // Signal to our MPAdView that the custom event successfully loaded an AdMob ad.
-//    [mpAdView_ customEventDidLoadAd];
-//    
-//    // Place the AdMobView into our MPAdView.
-//    [mpAdView_ setAdContentView:adView];
-//}
-//
-//- (void)adRequestFailed:(MMAdView *) adView{
-//    // Signal to our MPAdView that the custom event failed to load an AdMob ad.
-//    [mpAdView_ customEventDidFailToLoadAd];
-//}
-//- (void)adModalWillAppear{
-//    //Signal to our MPAdView that the user interacted with the custom event
-//    [mpAdView_ customEventActionWillBegin];
-//}
-//- (void)adModalWasDismissed{
-//    //Signal to our MPAdView that the user is done interacting with the custom event
-//    [mpAdView_ customEventActionDidEnd];
-//}
+- (void)adRequestSucceeded:(MMAdView *) adView{
+    
+    // Signal to our MPAdView that the custom event successfully loaded an AdMob ad.
+    [adView_ customEventDidLoadAd];
+    
+    // Place the AdMobView into our MPAdView.
+    [adView_ setAdContentView:adView];
+}
+
+- (void)adRequestFailed:(MMAdView *) adView{
+    // Signal to our MPAdView that the custom event failed to load an AdMob ad.
+    [adView_ customEventDidFailToLoadAd];
+}
+- (void)adModalWillAppear{
+    //Signal to our MPAdView that the user interacted with the custom event
+    [adView_ customEventActionWillBegin];
+}
+- (void)adModalWasDismissed{
+    //Signal to our MPAdView that the user is done interacting with the custom event
+    [adView_ customEventActionDidEnd];
+}
 
 @end

@@ -41,8 +41,9 @@
 #import "MPAdView.h"
 #import "MPAdConversionTracker.h"
 #import "GADBannerView.h"
+#import "MMAdView.h"
 
-@interface MopubInstance : NSObject <MPAdViewDelegate,GADBannerViewDelegate>{
+@interface MopubInstance : NSObject <MPAdViewDelegate,GADBannerViewDelegate,MMAdDelegate>{
     
 //    MopubDummyViewController *containerView_;
     MPAdView *adView_;
