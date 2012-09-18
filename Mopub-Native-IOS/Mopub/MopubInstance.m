@@ -44,8 +44,6 @@
     if (self=[self init]) {
 
         aid_=aid;
-        
-//        containerView_=[[MopubDummyViewController alloc] initWithNibName:@"MopubDummyViewController" bundle:nil];
             
         // Instantiate the MPAdView with your ad unit ID.
         adView_ = [[MPAdView alloc] initWithAdUnitId:aid_ size:MOPUB_BANNER_SIZE];
@@ -67,13 +65,14 @@
     if(adView_){
         adView_.frame = frame;
         [[[[UIApplication sharedApplication] keyWindow] rootViewController].view addSubview:adView_];
-//        [[[[UIApplication sharedApplication] keyWindow] rootViewController].view addSubview:containerView_.view];
+        [adView_ setIgnoresAutorefresh:NO];
     }
 }
 
 - (void) dismissAdView
 {
     if(adView_){
+        [adView_ setIgnoresAutorefresh:YES];
         [adView_ removeFromSuperview];
 //        [containerView_.view removeFromSuperview];
     }
@@ -84,7 +83,6 @@
         [adView_ setAdUnitId:aid];
     }
 }
-
 
 - (void) loadAd
 {

@@ -16,8 +16,9 @@ public class MopubDismissAdViewFunction implements FREFunction {
 
 		MoPubView adView = cnt.getAdView();
 
+		adView.setAutorefreshEnabled(false);
 		adView.setVisibility(View.INVISIBLE);
-
+		
 		return null;
 	}
 

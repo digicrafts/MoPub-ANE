@@ -47,9 +47,8 @@ public class MopubShowAdViewFunction implements FREFunction {
 	      }
 	      
 	      adView.setVisibility(View.VISIBLE);
-	    	
-//	      adView.setAdUnitId(cnt.getUnitId());
-//	      adView.loadAd();
+	      adView.setAutorefreshEnabled(true);
+	      
 	    }
 	    catch (IllegalStateException e) {
 	      e.printStackTrace();
