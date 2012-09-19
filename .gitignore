@@ -5,3 +5,4 @@ Mopub-Native-IOS/build*
 package.sh
 Mopub-Native-Android/build*
 lib/*
+local.properties
