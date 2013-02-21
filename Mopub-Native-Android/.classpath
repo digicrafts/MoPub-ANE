@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry kind="lib" path="/Users/tsangwailam/Documents/Android Project/android-sdk/platforms/android-8/android.jar"/>
-	<classpathentry kind="lib" path="/Applications/Adobe Flash Builder 4.6/sdks/4.6.0_air3.3/lib/android/FlashRuntimeExtensions.jar"/>
-	<classpathentry kind="lib" path="/Users/tsangwailam/Documents/Iphone Project/Speedy Winner/MopubANE/lib/mopub-android-sdk-modify/bin/mopub-android-sdk.jar"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>

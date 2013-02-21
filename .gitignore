@@ -6,3 +6,5 @@ package.sh
 Mopub-Native-Android/build*
 lib/*
 local.properties
+android/com2
+ios/build
