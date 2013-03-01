@@ -5,7 +5,6 @@ import android.graphics.Rect;
 import android.widget.RelativeLayout;
 import android.widget.ImageView;
 
-
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 
@@ -45,7 +44,8 @@ public class MopubExtensionContext extends FREContext {
 	public Map<String, FREFunction> getFunctions() {
 		
 		Map<String, FREFunction> functionMap = new HashMap<String, FREFunction>();
-	    
+
+        functionMap.put("isSupported", new MopubSupportedFunction());
 		functionMap.put("create", new MopubCreateFunction());
 	    functionMap.put("setUnitId", new MopubSetUnitIdFunction());
 	    functionMap.put("showAdView", new MopubShowAdViewFunction());

@@ -41,199 +41,218 @@ import flash.external.ExtensionContext;
 import flash.system.Capabilities;
 
 public class Mopub extends EventDispatcher
-	{
-		public static var instance:Mopub;
-		private static var allowInstance:Boolean=false;
-		private static var extensionContext:ExtensionContext = null;
-		private static var shown:Boolean=false;
-		private static var loaded:Boolean=false;
-		
-		public function Mopub()
-		{
-			if(!allowInstance){
-				throw new Error("Error: Instantiation failed: Use Mopub.getInstance() instead of new.");
-			}
-		}
+{
+    public static var instance:Mopub;
+    private static var allowInstance:Boolean=false;
+    private static var extensionContext:ExtensionContext = null;
+    private static var shown:Boolean=false;
+    private static var loaded:Boolean=false;
+
+    public function Mopub()
+    {
+        if(!allowInstance){
+            throw new Error("Error: Instantiation failed: Use Mopub.getInstance() instead of new.");
+        }
+    }
 		
 // Private Static Function
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
-		/**
-		 * 
-		 * @return 
-		 * 
-		 */		
-		private static function getInstance():Mopub
-		{
-			if(instance==null){
-				allowInstance=true;
+    /**
+     *
+     * @return
+     *
+     */
+    private static function getInstance():Mopub
+    {
+        if(instance==null){
+            allowInstance=true;
 //				trace("[Mopub] getInstance");
-				instance=new Mopub();			
-				if ( !extensionContext && Capabilities.os.indexOf("x86_64")==-1)
-				{
-					trace("[Mopub] Get Mopub Extension Instance...");
-					extensionContext = ExtensionContext.createExtensionContext("digicrafts.extensions.Mopub","Mopub");
-					extensionContext.addEventListener(StatusEvent.STATUS,instance._handleStatusEvents);
+            instance=new Mopub();
+            if ( !extensionContext && Capabilities.os.indexOf("x86_64")==-1)
+            {
+                trace("[Mopub] Get Mopub Extension Instance...");
+                extensionContext = ExtensionContext.createExtensionContext("digicrafts.extensions.Mopub","Mopub");
+                extensionContext.addEventListener(StatusEvent.STATUS,instance._handleStatusEvents);
 //					trace("[Mopub] Init Mopub...");
-				}
-				allowInstance=false;
-			}
-			return instance;
-		}
-		
+            }
+            allowInstance=false;
+        }
+        return instance;
+    }
+
 // Public Static Function
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/**
-		 * 
-		 * 
-		 */		
-		public static function create(aid:String):void
-		{
-			getInstance()._create(aid);			
-		}
-		/**
-		 * 
-		 * @param aid
-		 * 
-		 */		
-		public static function setAID(aid:String):void
-		{
-			getInstance()._setAID(aid);	
-		}
-		/**
-		 * 
-		 * 
-		 */		
-		public static function showAdView(x:Number,y:Number,width:Number,height:Number):void
-		{
-			if(!shown){
-				shown=true;
-				// Do show Ads
-				getInstance()._showAdView(x,y,width,height);
-			}
-		}
-		/**
-		 * 
-		 * 
-		 */		
-		public static function updateAdView(x:Number,y:Number,width:Number,height:Number):void
-		{			
-			// Do show Ads
-			getInstance()._showAdView(x,y,width,height);		
-		}
-		/**
-		 * 
-		 * 
-		 */		
-		public static function dismissAdView():void
-		{
-			if(shown){
-				shown=false;
-				// Do hide Ads
-				getInstance()._dismissAdView();
-			}
-		}
-		/**
-		 * 
-		 * 
-		 */		
-		public static function loadAd():void
-		{
-			getInstance()._loadAd();
-		}
-		/**
-		 * 
-		 * 
-		 */		
-		public static function refreshAd():void
-		{
-			getInstance()._refreshAd();
-		}
 
-		
+    /**
+     *
+     *
+     */
+    public static function isSupported():Boolean
+    {
+        return getInstance()._isSupported();
+    }
+
+    /**
+     *
+     *
+     */
+    public static function create(aid:String):void
+    {
+        getInstance()._create(aid);
+    }
+    /**
+     *
+     * @param aid
+     *
+     */
+    public static function setAID(aid:String):void
+    {
+        getInstance()._setAID(aid);
+    }
+    /**
+     *
+     *
+     */
+    public static function showAdView(x:Number,y:Number,width:Number,height:Number):void
+    {
+        if(!shown){
+            shown=true;
+            // Do show Ads
+            getInstance()._showAdView(x,y,width,height);
+        }
+    }
+    /**
+     *
+     *
+     */
+    public static function updateAdView(x:Number,y:Number,width:Number,height:Number):void
+    {
+        // Do show Ads
+        getInstance()._showAdView(x,y,width,height);
+    }
+    /**
+     *
+     *
+     */
+    public static function dismissAdView():void
+    {
+        if(shown){
+            shown=false;
+            // Do hide Ads
+            getInstance()._dismissAdView();
+        }
+    }
+    /**
+     *
+     *
+     */
+    public static function loadAd():void
+    {
+        getInstance()._loadAd();
+    }
+    /**
+     *
+     *
+     */
+    public static function refreshAd():void
+    {
+        getInstance()._refreshAd();
+    }
+
+
 // Private Functions
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/**
-		 * 
-		 * 
-		 */		
-		protected function _create(aid:String):void
-		{
+
+    /**
+     *
+     *
+     */
+    protected function _isSupported():Boolean
+    {
+        if(extensionContext)
+            return extensionContext.call("isSupported");
+        return false;
+    }
+    /**
+     *
+     *
+     */
+    protected function _create(aid:String):void
+    {
 //			trace(extensionContext);
-            if(extensionContext)
-			extensionContext.call("create",aid);
-		}
-		/**
-		 * 
-		 * @param aid
-		 * 
-		 */		
-		protected function _setAID(aid:String):void
-		{
-            if(extensionContext)
-			extensionContext.call("setUnitId",aid);
-		}
-		/**
-		 * 
-		 * @param x
-		 * @param y
-		 * @param width
-		 * @param height
-		 * 
-		 */		
-		protected function _showAdView(x:Number,y:Number,width:Number,height:Number):void
-		{
-            if(extensionContext)
-			extensionContext.call("showAdView",x,y,width,height);
-			if(!loaded) _loadAd();
-		}
-		/**
-		 * 
-		 * 
-		 */		
-		protected function _dismissAdView():void
-		{
-            if(extensionContext)
-			extensionContext.call("dismissAdView");
-		}
-		/**
-		 * 
-		 * 
-		 */		
-		protected function _loadAd():void
-		{
-			loaded=true;
-            if(extensionContext)
-			extensionContext.call("loadAd");
-		}
-		/**
-		 * 
-		 * 
-		 */		
-		protected function _refreshAd():void
-		{
-            if(extensionContext)
-			extensionContext.call("refreshAd");
-		}
-		
+        if(extensionContext)
+        extensionContext.call("create",aid);
+    }
+    /**
+     *
+     * @param aid
+     *
+     */
+    protected function _setAID(aid:String):void
+    {
+        if(extensionContext)
+        extensionContext.call("setUnitId",aid);
+    }
+    /**
+     *
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     *
+     */
+    protected function _showAdView(x:Number,y:Number,width:Number,height:Number):void
+    {
+        if(extensionContext)
+        extensionContext.call("showAdView",x,y,width,height);
+        if(!loaded) _loadAd();
+    }
+    /**
+     *
+     *
+     */
+    protected function _dismissAdView():void
+    {
+        if(extensionContext)
+        extensionContext.call("dismissAdView");
+    }
+    /**
+     *
+     *
+     */
+    protected function _loadAd():void
+    {
+        loaded=true;
+        if(extensionContext)
+        extensionContext.call("loadAd");
+    }
+    /**
+     *
+     *
+     */
+    protected function _refreshAd():void
+    {
+        if(extensionContext)
+        extensionContext.call("refreshAd");
+    }
+
 // Private Handler Functions
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/**
-		 * 
-		 * @param e
-		 * 
-		 */		
-		protected function _handleStatusEvents(e:StatusEvent):void
-		{
-			var event:MopubEvent=new MopubEvent(e.code);
-			if (event != null)
-			{
-				this.dispatchEvent(event);				
-			}
-		}
-		
-	}
+
+    /**
+     *
+     * @param e
+     *
+     */
+    protected function _handleStatusEvents(e:StatusEvent):void
+    {
+        var event:MopubEvent=new MopubEvent(e.code);
+        if (event != null)
+        {
+            this.dispatchEvent(event);
+        }
+    }
+
+}
 }

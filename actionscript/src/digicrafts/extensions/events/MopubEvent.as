@@ -4,6 +4,8 @@ package digicrafts.extensions.events
 	
 	public class MopubEvent extends Event
 	{
+        public static const AD_LOADED:String="adViewDidLoadAd";
+        public static const AD_FAIL:String="adViewDidFailToLoadAd";
 		public static const PRESENT_MODAL_VIEW:String="willPresentModalViewEvent";
 		public static const DISMISS_MODAL_VIEW:String="didDismissModalViewEvent";
 		

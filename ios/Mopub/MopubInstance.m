@@ -148,11 +148,17 @@
         newFrame.origin.x = ([[[UIApplication sharedApplication] keyWindow] rootViewController].view.frame.size.width- size.width) / 2;    
     
     view.frame = newFrame;
+    
+    // Fire Event
+    if (eventHandler_ != nil)
+        eventHandler_(@"adViewDidLoadAd",@"1");
 }
 
 - (void)adViewDidFailToLoadAd:(MPAdView *)view
 {
-    
+    // Fire Event
+    if (eventHandler_ != nil)
+        eventHandler_(@"adViewDidFailToLoadAd",@"1");
 }
 
 - (void)adMobCustomEvent:(MPAdView *)theAdView

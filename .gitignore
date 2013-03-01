@@ -10,3 +10,4 @@ android/com2
 ios/build
 *.ipr
 *.iws
+*.iml
