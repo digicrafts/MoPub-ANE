@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Air Native Extension Build Scripts" default="all">
+<project name="Air Native Extension Build Scripts" default="all" basedir=".">
 
     <!-- Config -->
     <property file="build.config"/>
@@ -35,11 +35,15 @@
         <mkdir dir="../android/temp/classes"/>
 
         <javac srcdir="../android/src" destdir="../android/temp/classes" includeantruntime="false">
+            <src path="${mopub.sdk}/Android/mopub-android-sdk/src"/>
+            <src path="${mopub.sdk}/Android/extras/src/com/mopub/mobileads/networkadapters"/>
             <classpath>
                 <pathelement location="${android.sdk}/android.jar"/>
                 <pathelement location="${flex.sdk}/lib/android/FlashRuntimeExtensions.jar"/>
                 <pathelement location="../android/lib/GoogleAdMobAdsSdk-6.2.1.jar"/>
             </classpath>
+            <exclude name="${mopub.sdk}/Android/extras/src/com/mopub/mobileads/networkadapters/MillennialAdapter.java"/>
+            <exclude name="${mopub.sdk}/Android/extras/src/com/mopub/mobileads/networkadapters/MillennialInterstitialAdapter.java"/>
         </javac>
 
 <!--         <mkdir dir="../android/temp/zip"/>
