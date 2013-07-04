@@ -35,30 +35,33 @@
         <mkdir dir="../android/temp/classes"/>
 
         <javac srcdir="../android/src" destdir="../android/temp/classes" includeantruntime="false">
-            <src path="${mopub.sdk}/Android/mopub-android-sdk/src"/>
-            <src path="${mopub.sdk}/Android/extras/src/com/mopub/mobileads/networkadapters"/>
+            <src path="../lib/mopub-sdk/src/main/java"/>
             <classpath>
                 <pathelement location="${android.sdk}/android.jar"/>
                 <pathelement location="${flex.sdk}/lib/android/FlashRuntimeExtensions.jar"/>
-                <pathelement location="../android/lib/GoogleAdMobAdsSdk-6.2.1.jar"/>
+                <fileset dir="../lib/mopub-sdk/libs">
+                    <include name="**/*.jar"/>
+                </fileset>
+                <!--<pathelement location="../lib/mopub-sdk/libs/GoogleAdMobAdsSdk-6.4.1.jar"/>-->
+                <!--<pathelement location="../lib/mopub-sdk/libs/MMSDK.jar"/>-->
             </classpath>
-            <exclude name="${mopub.sdk}/Android/extras/src/com/mopub/mobileads/networkadapters/MillennialAdapter.java"/>
-            <exclude name="${mopub.sdk}/Android/extras/src/com/mopub/mobileads/networkadapters/MillennialInterstitialAdapter.java"/>
         </javac>
 
-<!--         <mkdir dir="../android/temp/zip"/>
-        <unzip src="../android/lib/GoogleAdMobAdsSdk-6.2.1.jar" dest="../android/temp/zip"/>
-        <copydir src="../android/temp/zip/com" dest="../android/temp/classes/com"/> -->
+        <mkdir dir="../android/temp/zip"/>
+        <unzip src="../lib/mopub-sdk/libs/GoogleAdMobAdsSdk-6.4.1.jar" dest="../android/temp/zip"/>
+        <copydir src="../android/temp/zip/com" dest="../android/temp/classes/com"/>
 
         <mkdir dir="../temp/android/"/>
         <jar basedir="../android/temp/classes" destfile="../temp/android/lib${name}.jar"/>
-        <!-- <jar basedir="../android/temp/classes" destfile="../android/temp/lib${name}.jar"/> -->
         <copy todir="../temp/android/res/">
             <fileset dir="../android/res"/>            
         </copy>
-        <copy todir="../temp/android/">
-            <fileset dir="../android/lib"/>            
-        </copy>
+        <!--<copy todir="../temp/android/">-->
+            <!--<fileset dir="../android/lib"/>            -->
+        <!--</copy>-->
+        <!--<copy todir="../temp/android/">-->
+            <!--<fileset dir="../lib/mopub-sdk/libs"/>-->
+        <!--</copy>-->
 <!--         <zip destfile="../temp/android/lib${name}.jar">
             <zipgroupfileset dir="../android/temp/" includes="*.jar"/>
         </zip> -->

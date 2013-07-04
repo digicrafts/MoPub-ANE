@@ -47,7 +47,7 @@
         
         // Instantiate the MPAdView with your ad unit ID.
         adView_ = [[MPAdView alloc] initWithAdUnitId:aid_ size:MOPUB_BANNER_SIZE];
-        
+
         // Register your view controller as the MPAdView's delegate.
         adView_.delegate = self;
 
@@ -64,6 +64,7 @@
         // Create a container to hold the adView
         if(adContainerView_==nil) {
             adContainerView_= [[UIView alloc] initWithFrame:frame];
+            adContainerView_.autoresizesSubviews=NO;
             [adContainerView_ addSubview:adView_];
         }
         
@@ -161,84 +162,85 @@
         eventHandler_(@"adViewDidFailToLoadAd",@"1");
 }
 
-- (void)adMobCustomEvent:(MPAdView *)theAdView
-{
-    
-    CGSize size=MOPUB_BANNER_SIZE;
-    GADBannerView *admob = [[GADBannerView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
-    
-    // Let the runtime know which UIViewController to restore after taking
-    // the user wherever the ad goes and add it to the view hierarchy.
-    admob.rootViewController = [[UIApplication sharedApplication] keyWindow].rootViewController;
-    
-    // Initiate a generic request to load it with an ad.
-    [admob loadRequest:[GADRequest request]];
-    
-}
+//- (void)adMobCustomEvent:(MPAdView *)theAdView
+//{
+//    
+//    CGSize size=MOPUB_BANNER_SIZE;
+//    GADBannerView *admob = [[GADBannerView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+//    
+//    // Let the runtime know which UIViewController to restore after taking
+//    // the user wherever the ad goes and add it to the view hierarchy.
+//    admob.rootViewController = [[UIApplication sharedApplication] keyWindow].rootViewController;
+//    
+//    // Initiate a generic request to load it with an ad.
+//    [admob loadRequest:[GADRequest request]];
+//    
+//}
+//
+//- (void)mmCustomEvent:(MPAdView *)theAdView
+//{
+//    CGSize size=MOPUB_BANNER_SIZE;
+//
+//    [[MMAdView adWithFrame:CGRectMake(0, 0, size.width, size.height)
+//                      type:MMBannerAdTop
+//                      apid:@""
+//                  delegate:self
+//                    loadAd:YES
+//                startTimer:YES] retain];
+//    
+//    
+//}
 
-- (void)mmCustomEvent:(MPAdView *)theAdView
-{
-    CGSize size=MOPUB_BANNER_SIZE;
-    [[MMAdView adWithFrame:CGRectMake(0, 0, size.width, size.height)
-                      type:MMBannerAdTop
-                      apid:@""
-                  delegate:self
-                    loadAd:YES
-                startTimer:YES] retain];
-    
-    
-}
-
-#pragma mark - GADBannerViewDelegate
-
-- (void)adViewDidReceiveAd:(GADBannerView *)bannerView
-{
-    // Signal to our MPAdView that the custom event successfully loaded an AdMob ad.
-    [adView_ customEventDidLoadAd];
-    
-    // Place the AdMobView into our MPAdView.
-    [adView_ setAdContentView:bannerView];
-}
-
-- (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error
-{
-    // Signal to our MPAdView that the custom event failed to load an AdMob ad.
-    [adView_ customEventDidFailToLoadAd];
-}
-
-- (void)adViewWillPresentScreen:(GADBannerView *)bannerView
-{
-    //Signal to our MPAdView that the user interacted with the custom event
-    [adView_ customEventActionWillBegin];
-}
-
-- (void)adViewDidDismissScreen:(GADBannerView *)bannerView {
-    //Signal to our MPAdView that the user is done interacting with the custom event
-    [adView_ customEventActionDidEnd];
-}
-
-#pragma mark - MMADViewDelegate
-
-- (void)adRequestSucceeded:(MMAdView *) adView{
-    
-    // Signal to our MPAdView that the custom event successfully loaded an AdMob ad.
-    [adView_ customEventDidLoadAd];
-    
-    // Place the AdMobView into our MPAdView.
-    [adView_ setAdContentView:adView];
-}
-
-- (void)adRequestFailed:(MMAdView *) adView{
-    // Signal to our MPAdView that the custom event failed to load an AdMob ad.
-    [adView_ customEventDidFailToLoadAd];
-}
-- (void)adModalWillAppear{
-    //Signal to our MPAdView that the user interacted with the custom event
-    [adView_ customEventActionWillBegin];
-}
-- (void)adModalWasDismissed{
-    //Signal to our MPAdView that the user is done interacting with the custom event
-    [adView_ customEventActionDidEnd];
-}
+//#pragma mark - GADBannerViewDelegate
+//
+//- (void)adViewDidReceiveAd:(GADBannerView *)bannerView
+//{
+//    // Signal to our MPAdView that the custom event successfully loaded an AdMob ad.
+//    [adView_ customEventDidLoadAd];
+//    
+//    // Place the AdMobView into our MPAdView.
+//    [adView_ setAdContentView:bannerView];
+//}
+//
+//- (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error
+//{
+//    // Signal to our MPAdView that the custom event failed to load an AdMob ad.
+//    [adView_ customEventDidFailToLoadAd];
+//}
+//
+//- (void)adViewWillPresentScreen:(GADBannerView *)bannerView
+//{
+//    //Signal to our MPAdView that the user interacted with the custom event
+//    [adView_ customEventActionWillBegin];
+//}
+//
+//- (void)adViewDidDismissScreen:(GADBannerView *)bannerView {
+//    //Signal to our MPAdView that the user is done interacting with the custom event
+//    [adView_ customEventActionDidEnd];
+//}
+//
+//#pragma mark - MMADViewDelegate
+//
+//- (void)adRequestSucceeded:(MMAdView *) adView{
+//    
+//    // Signal to our MPAdView that the custom event successfully loaded an AdMob ad.
+//    [adView_ customEventDidLoadAd];
+//    
+//    // Place the AdMobView into our MPAdView.
+//    [adView_ setAdContentView:adView];
+//}
+//
+//- (void)adRequestFailed:(MMAdView *) adView{
+//    // Signal to our MPAdView that the custom event failed to load an AdMob ad.
+//    [adView_ customEventDidFailToLoadAd];
+//}
+//- (void)adModalWillAppear{
+//    //Signal to our MPAdView that the user interacted with the custom event
+//    [adView_ customEventActionWillBegin];
+//}
+//- (void)adModalWasDismissed{
+//    //Signal to our MPAdView that the user is done interacting with the custom event
+//    [adView_ customEventActionDidEnd];
+//}
 
 @end

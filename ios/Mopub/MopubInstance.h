@@ -39,12 +39,12 @@
 
 #import "MPAdView.h"
 #import "MPAdConversionTracker.h"
-#import "GADBannerView.h"
-#import "MMAdView.h"
+//#import "GADBannerView.h"
+//#import "MMAdView.h"
 
 typedef void(^MopubEventHandler)(NSString*, NSString*);
 
-@interface MopubInstance : NSObject <MPAdViewDelegate,GADBannerViewDelegate,MMAdDelegate>{
+@interface MopubInstance : NSObject <MPAdViewDelegate>{
     
     MPAdView *adView_;
     UIView *adContainerView_;
