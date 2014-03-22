@@ -52,12 +52,17 @@
         </javac>
 
         <mkdir dir="../android/temp/zip"/>
-        <unzip src="../lib/android/google-play-services.jar" dest="../android/temp/zip" />
         <unzip dest="../android/temp/zip" src="../lib/android/InMobi-4.1.1.jar" />
         <unzip dest="../android/temp/zip" src="../lib/android/vungle-publisher-1.3.11.jar" />
         <unzip dest="../android/temp/zip" src="../lib/android/MMSDK.jar" />
         <unzip dest="../android/temp/zip" src="../lib/android/greystripe-android-sdk-2.3.0.jar" />
+        <unzip dest="../android/temp/zip" src="../vendor/mopub-android-sdk-master/mopub-sdk/libs/android-support-v4.jar" />
+        <!--<unzip dest="../android/temp/zip" src="../lib/android/google-play-services.jar" />-->
         <copydir src="../android/temp/zip/com" dest="../android/temp/classes/com"/>
+
+        <copy todir="../temp/android/res">
+            <fileset dir="../android/temp/zip/res" />
+        </copy>
 
         <copy todir="../temp/android/res/">
             <fileset dir="../android/res"/>
@@ -86,6 +91,7 @@
         </pathconvert>
 
         <exec executable="${flex.sdk}/bin/compc${bin.ext}" failonerror="true">
+            <env key="AIR_SDK_HOME" value="${flex.sdk}"/>
             <arg line='-source-path ../actionscript/src'/>
             <arg line='-output ../temp/swc/${name}.swc'/>
             <arg line='-swf-version=14'/>
