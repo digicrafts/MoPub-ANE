@@ -89,10 +89,11 @@ Add the following settings in <application> tag.
 <activity android:name="com.mopub.mobileads.MraidBrowser" android:configChanges="keyboardHidden|orientation"/>
 ```
 
-Add the following settins if you want to use AdMob.
+Add the following settins if you want to use AdMob (Use Google Play Service).
 
 ```xml
-<activity android:name="com.google.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
+<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+<activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
 ```
 
 ```xml
