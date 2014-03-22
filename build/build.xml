@@ -35,11 +35,11 @@
         <mkdir dir="../android/temp/classes"/>
 
         <javac srcdir="../android/src" destdir="../android/temp/classes" includeantruntime="false">
-            <src path="../lib/mopub-android-sdk-master/mopub-sdk/src/main/java"/>
+            <src path="../vendor/mopub-android-sdk-master/mopub-sdk/src/main/java"/>
             <classpath>
                 <pathelement location="${android.sdk}/android.jar"/>
                 <pathelement location="${flex.sdk}/lib/android/FlashRuntimeExtensions.jar"/>
-                <fileset dir="../lib/mopub-android-sdk-master/mopub-sdk/libs">
+                <fileset dir="../vendor/mopub-android-sdk-master/mopub-sdk/libs">
                     <include name="**/*.jar"/>
                 </fileset>
                 <pathelement location="../lib/android/google-play-services.jar"/>
@@ -55,20 +55,21 @@
         <!--<unzip src="../lib/mopub-android-sdk-master/mopub-sdk/libs/GoogleAdMobAdsSdk-6.4.1.jar" dest="../android/temp/zip"/>-->
         <!--<copydir src="../android/temp/zip/com" dest="../android/temp/classes/com"/>-->
 
+        <mkdir dir="../android/temp/zip"/>
+        <unzip src="../lib/android/google-play-services.jar" dest="../android/temp/zip" />
+        <copydir src="../android/temp/zip/com" dest="../android/temp/classes/com"/>
+
+        <copy todir="../temp/android/res/">
+            <fileset dir="../android/res"/>
+        </copy>
+
+        <copy todir="../temp/android/res/values/">
+            <fileset dir="../lib/android/res/values"/>
+        </copy>
+
         <mkdir dir="../temp/android/"/>
         <jar basedir="../android/temp/classes" destfile="../temp/android/lib${name}.jar"/>
-        <copy todir="../temp/android/res/">
-            <fileset dir="../android/res"/>            
-        </copy>
-        <!--<copy todir="../temp/android/">-->
-            <!--<fileset dir="../android/lib"/>            -->
-        <!--</copy>-->
-        <!--<copy todir="../temp/android/">-->
-            <!--<fileset dir="../lib/mopub-sdk/libs"/>-->
-        <!--</copy>-->
-<!--         <zip destfile="../temp/android/lib${name}.jar">
-            <zipgroupfileset dir="../android/temp/" includes="*.jar"/>
-        </zip> -->
+
         <delete dir="../android/temp"/>
     </target>
 
