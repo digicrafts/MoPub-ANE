@@ -51,12 +51,12 @@
             </classpath>
         </javac>
 
-        <!--<mkdir dir="../android/temp/zip"/>-->
-        <!--<unzip src="../lib/mopub-android-sdk-master/mopub-sdk/libs/GoogleAdMobAdsSdk-6.4.1.jar" dest="../android/temp/zip"/>-->
-        <!--<copydir src="../android/temp/zip/com" dest="../android/temp/classes/com"/>-->
-
         <mkdir dir="../android/temp/zip"/>
         <unzip src="../lib/android/google-play-services.jar" dest="../android/temp/zip" />
+        <unzip dest="../android/temp/zip" src="../lib/android/InMobi-4.1.1.jar" />
+        <unzip dest="../android/temp/zip" src="../lib/android/vungle-publisher-1.3.11.jar" />
+        <unzip dest="../android/temp/zip" src="../lib/android/MMSDK.jar" />
+        <unzip dest="../android/temp/zip" src="../lib/android/greystripe-android-sdk-2.3.0.jar" />
         <copydir src="../android/temp/zip/com" dest="../android/temp/classes/com"/>
 
         <copy todir="../temp/android/res/">
