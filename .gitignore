@@ -8,6 +8,7 @@ lib/*
 local.properties
 android/com2
 ios/build
+vendor/
 *.ipr
 *.iws
 *.iml

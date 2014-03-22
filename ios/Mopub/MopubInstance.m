@@ -65,14 +65,18 @@
         if(adContainerView_==nil) {
             adContainerView_= [[UIView alloc] initWithFrame:frame];
             adContainerView_.autoresizesSubviews=NO;
-            [adContainerView_ addSubview:adView_];
+//            [adContainerView_ addSubview:adView_];
         }
         
         // Layout ad Container
-        adContainerView_.frame=frame;
+//        adContainerView_.frame=frame;
+        adView_.frame=frame;
         
         // Add the container to root view
-        [[[[UIApplication sharedApplication] keyWindow] rootViewController].view addSubview:adContainerView_];
+//        [[[[UIApplication sharedApplication] keyWindow] rootViewController].view addSubview:adContainerView_];
+        [[[[UIApplication sharedApplication] keyWindow] rootViewController].view addSubview:adView_];
+        
+        
         
         // Enable Auto Refresh
         [adView_ setIgnoresAutorefresh:NO];
@@ -86,7 +90,8 @@
 {
     if(adContainerView_&&adView_){
         [adView_ setIgnoresAutorefresh:YES];
-        [adContainerView_ removeFromSuperview];
+//        [adContainerView_ removeFromSuperview];
+        [adView_ removeFromSuperview];
     }
 }
 

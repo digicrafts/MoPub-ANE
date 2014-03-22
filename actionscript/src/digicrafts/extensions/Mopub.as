@@ -204,8 +204,9 @@ public class Mopub extends EventDispatcher
      */
     protected function _showAdView(x:Number,y:Number,width:Number,height:Number):void
     {
+        trace('_showAdView',x,y,width,height);
         if(extensionContext)
-        extensionContext.call("showAdView",x,y,width,height);
+        extensionContext.call("showAdView",int(x),int(y),int(width),int(height));
         if(!loaded) _loadAd();
     }
     /**

@@ -1,12 +1,18 @@
 <platform xmlns="http://ns.adobe.com/air/extension/3.1">
     <sdkVersion>4.3</sdkVersion>
     <linkerOptions>
-        <option>-ios_version_min 4.0</option>
+        <option>-ios_version_min 4.3</option>
         <option>-framework StoreKit</option>
         <option>-framework CoreGraphics</option>
         <option>-framework MessageUI</option>
         <option>-framework iAd</option>
         <option>-framework MediaPlayer</option>  
         <option>-framework AdSupport</option>
+        <option>-framework EventKit</option>
+        <option>-framework EventKitUI</option>
+        <option>-framework CoreTelephony</option>
+        <option>-framework AddressBook</option>
+        <option>-framework AddressBookUI</option>
+        <option>-framework PassKit</option>
     </linkerOptions> 
 </platform>

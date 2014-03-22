@@ -2,7 +2,7 @@
 <project name="Air Native Extension Build Scripts" default="all" basedir=".">
 
     <!-- Config -->
-    <property file="build.config"/>
+    <property file="./build.config"/>
 
     <!-- All -->
     <target name="all" depends="ios,android,swc,package" description="Full build of extension"/>
@@ -35,21 +35,25 @@
         <mkdir dir="../android/temp/classes"/>
 
         <javac srcdir="../android/src" destdir="../android/temp/classes" includeantruntime="false">
-            <src path="../lib/mopub-sdk/src/main/java"/>
+            <src path="../lib/mopub-android-sdk-master/mopub-sdk/src/main/java"/>
             <classpath>
                 <pathelement location="${android.sdk}/android.jar"/>
                 <pathelement location="${flex.sdk}/lib/android/FlashRuntimeExtensions.jar"/>
-                <fileset dir="../lib/mopub-sdk/libs">
+                <fileset dir="../lib/mopub-android-sdk-master/mopub-sdk/libs">
                     <include name="**/*.jar"/>
                 </fileset>
-                <!--<pathelement location="../lib/mopub-sdk/libs/GoogleAdMobAdsSdk-6.4.1.jar"/>-->
-                <!--<pathelement location="../lib/mopub-sdk/libs/MMSDK.jar"/>-->
+                <pathelement location="../lib/android/google-play-services.jar"/>
+                <pathelement location="../lib/android/InMobi-4.1.1.jar"/>
+                <pathelement location="../lib/android/vungle-publisher-1.3.11.jar"/>
+                <pathelement location="../lib/android/MMSDK.jar"/>
+                <pathelement location="../lib/android/greystripe-android-sdk-2.3.0.jar"/>
+
             </classpath>
         </javac>
 
-        <mkdir dir="../android/temp/zip"/>
-        <unzip src="../lib/mopub-sdk/libs/GoogleAdMobAdsSdk-6.4.1.jar" dest="../android/temp/zip"/>
-        <copydir src="../android/temp/zip/com" dest="../android/temp/classes/com"/>
+        <!--<mkdir dir="../android/temp/zip"/>-->
+        <!--<unzip src="../lib/mopub-android-sdk-master/mopub-sdk/libs/GoogleAdMobAdsSdk-6.4.1.jar" dest="../android/temp/zip"/>-->
+        <!--<copydir src="../android/temp/zip/com" dest="../android/temp/classes/com"/>-->
 
         <mkdir dir="../temp/android/"/>
         <jar basedir="../android/temp/classes" destfile="../temp/android/lib${name}.jar"/>
