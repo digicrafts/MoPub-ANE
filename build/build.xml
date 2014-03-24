@@ -51,22 +51,30 @@
             </classpath>
         </javac>
 
-        <mkdir dir="../android/temp/zip"/>
-        <unzip dest="../android/temp/zip" src="../lib/android/InMobi-4.1.1.jar" />
-        <unzip dest="../android/temp/zip" src="../lib/android/vungle-publisher-1.3.11.jar" />
-        <unzip dest="../android/temp/zip" src="../lib/android/MMSDK.jar" />
-        <unzip dest="../android/temp/zip" src="../lib/android/greystripe-android-sdk-2.3.0.jar" />
-        <unzip dest="../android/temp/zip" src="../vendor/mopub-android-sdk-master/mopub-sdk/libs/android-support-v4.jar" />
+        <!--<mkdir dir="../android/temp/zip"/>-->
+        <!--<unzip dest="../android/temp/zip" src="../lib/android/InMobi-4.1.1.jar" />-->
+        <!--<unzip dest="../android/temp/zip" src="../lib/android/vungle-publisher-1.3.11.jar" />-->
+        <!--<unzip dest="../android/temp/zip" src="../lib/android/MMSDK.jar" />-->
+        <!--<unzip dest="../android/temp/zip" src="../lib/android/greystripe-android-sdk-2.3.0.jar" />-->
+        <!--<unzip dest="../android/temp/zip" src="../vendor/mopub-android-sdk-master/mopub-sdk/libs/android-support-v4.jar" />-->
         <!--<unzip dest="../android/temp/zip" src="../lib/android/google-play-services.jar" />-->
-        <copydir src="../android/temp/zip/com" dest="../android/temp/classes/com"/>
+        <!--<copydir src="../android/temp/zip/com" dest="../android/temp/classes/com"/>-->
 
-        <copy todir="../temp/android/res">
-            <fileset dir="../android/temp/zip/res" />
-        </copy>
+        <!--<copy todir="../temp/android/res">-->
+            <!--<fileset dir="../android/temp/zip/res" />-->
+        <!--</copy>-->
 
         <copy todir="../temp/android/res/">
             <fileset dir="../android/res"/>
         </copy>
+
+        <copy todir="../temp/android/">
+            <fileset dir="../lib/android"/>
+        </copy>
+
+        <!--<copy todir="../temp/android/">-->
+            <!--<fileset file="../vendor/mopub-android-sdk-master/mopub-sdk/libs/android-support-v4.jar"/>-->
+        <!--</copy>-->
 
         <copy todir="../temp/android/res/values/">
             <fileset dir="../lib/android/res/values"/>
@@ -116,7 +124,7 @@
             <arg value="../build/extension.xml"/>
             <arg line="-swc swc/${name}.swc"/>
             <arg line="-platform iPhone-ARM -platformoptions ../build/platform.xml -C ios/ ."/>
-            <arg line="-platform Android-ARM -C android/ ."/>
+            <arg line="-platform Android-ARM -platformoptions ../build/platform-android.xml -C android/ ."/>
             <arg line="-platform default -C default/ ."/>
         </exec>
 
